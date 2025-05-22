@@ -1,0 +1,87 @@
+<div class="inputs">
+  <div class="input first">
+    <div class="header">
+      <mat-icon aria-hidden="false" aria-label="location" fontIcon="location_on" class="material-icons-outlined icon"/>
+      Destino
+    </div>
+    <!-- autocomplete -->
+    <input
+      type="text"
+      name="location"
+      id="location"
+      [(ngModel)]="inputData.location"
+      (ngModelChange)="onLocationChange()"
+       [matAutocomplete]="auto"
+      placeholder="Digite o nome do local"
+      
+    />
+    <mat-autocomplete #auto="matAutocomplete"  [displayWith]="displayFn">
+    @for(location of filteredSuggestions; track location) {
+        <mat-option [value]="location">
+                <div class="autocomplete-option">
+                <mat-icon aria-hidden="false"aria-label="location" fontIcon="location_on" class="material-icons-outlined icon"/>
+                {{location.name}}
+            </div>
+            </mat-option>
+    }
+    </mat-autocomplete>
+  </div>
+
+  <div class="input">
+    <div class="header">
+      <mat-icon aria-hidden="false" aria-label="calendar_today" fontIcon="calendar_today" class="material-icons-outlined icon"/>
+      Entrada
+    </div>
+    <!-- data -->
+    <input type="date" name="startDate" id="startDate" [(ngModel)]="inputData.startDate" />
+  </div>
+  <div class="input">
+    <div class="header">
+      <mat-icon aria-hidden="false" aria-label="calendar_today" fontIcon="calendar_today" class="material-icons-outlined icon"/> Saida
+    </div>
+    <!-- data -->
+    <input type="date" name="endDate" id="endDate" [(ngModel)]="inputData.endDate"/>
+  </div>
+  <div class="input">
+    <div class="header">
+      <mat-icon aria-hidden="false" aria-label="group" fontIcon="group" class="material-icons-outlined icon"/> Hospedes
+    </div>
+
+    <input type="text" name="guests" id="guests"  class="guests" [matMenuTriggerFor]="menu" [value]="inputData.people.adults + ' Adultos, ' + inputData.people.children + ' criancas'"/>
+    <mat-menu #menu="matMenu" class="people-menu" id="people-menu">
+     <div class="people-selector">
+        <span>Adultos</span>
+        <div class="number">
+                <div class="counter">
+                    <button mat-icon-button (click)="decrease('adults'); $event.stopPropagation()" >
+                    <mat-icon>remove</mat-icon>
+                    </button>
+                    <span>{{ inputData.people.adults }}</span>
+                    <button mat-icon-button (click)="increase('adults'); $event.stopPropagation()">
+                    <mat-icon>add</mat-icon>
+                    </button>
+                </div>
+        </div>
+  </div>
+
+  <div class="people-selector">
+    <span>Crianças</span>
+    <div class="number">
+        <div class="counter">
+            <button mat-icon-button (click)="decrease('children'); $event.stopPropagation()">
+                <mat-icon>remove</mat-icon>
+            </button>
+            <span>{{ inputData.people.children }}</span>
+            <button mat-icon-button (click)="increase('children'); $event.stopPropagation()">
+                <mat-icon>add</mat-icon>
+            </button>
+        </div>
+    </div>
+    <div class="apply"><button mat-menu-item>Aplicar</button></div>
+    </div>
+</mat-menu>
+  </div>
+  <div class="button">
+    <button class="button" (click)="search()">Pesquisar</button>
+  </div>
+</div>

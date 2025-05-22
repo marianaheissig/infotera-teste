@@ -1,0 +1,48 @@
+<app-input></app-input>
+<div class="main">
+    <div class="header">
+        <div class="text">
+            <p><span>{{info.location?.region}}</span></p>
+            <p class="subtext">{{hotels.length}} hoteis encontrados</p>
+        </div>
+
+        <!-- active colocar uma borda azul -->
+        <div class="filter">
+            <button (click)="toggleFilter()">
+                <mat-icon aria-hidden="false" aria-label="tune" fontIcon="tune" class="material-icons-outlined icon" />
+            </button>
+
+            <div class="filterOn" [style]="!isFilterOn ? 'display: none' : ''">
+                <app-filter 
+                (filter)="onFilter($event)" 
+                [starOptions]="starOptions">
+            </app-filter>
+            </div>
+        </div>
+    </div>
+
+    <div class="hotels">
+        @for(hotel of hotelsFiltered ; track hotel) {
+            <div class="hotel">
+                <div class="img">
+                    <img [src]="hotel.hotel.image" alt="">
+                    <div class="overlay"></div>
+                    <div class="text-overlay">R${{hotel.lowestPrice.amount}} <span>/noite</span></div>
+                </div>
+                <div class="title">
+                    <p>{{hotel.hotel.name}}</p>
+                </div>
+
+                <div class="info">
+                    <div class="stars">
+
+                        @for(star of createArray(hotel.hotel.stars) ; track star) {
+                            <mat-icon aria-hidden="false" aria-label="star" fontIcon="star" class="material-icons-outlined icon" />
+                        }
+                    </div>
+                <button (click)="getHotel(hotel.id)">Ver mais</button>   
+                </div>
+            </div>
+        }
+    </div>
+</div>

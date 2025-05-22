@@ -1,0 +1,14 @@
+<div class="main" [style.background-color]="getBackgroundColor()">
+    <p class="logo">infotravel</p>
+    <div class="session">
+        @if(!isHome) {
+
+            <div class="child" (click)="goHome()">
+                <mat-icon aria-hidden="false" aria-label="home" fontIcon="home" class="material-icons-outlined " /> Pagina inicial
+            </div>
+        }
+        <div class="child">
+            <mat-icon aria-hidden="false" aria-label="login" fontIcon="login" class="material-icons-outlined " /> Iniciar sessao
+        </div>
+    </div>
+</div>

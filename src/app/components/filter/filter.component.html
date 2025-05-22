@@ -1,0 +1,53 @@
+<div class="menu-container">
+  <div class="header">
+    <p>Filtros</p>
+
+    <div class="clear" (click)="clearFilter()">
+      <mat-icon aria-hidden="false" aria-label="delete" fontIcon="delete" class="material-icons-outlined icon" />
+      Limpar filtros
+    </div>
+  </div>
+  
+    <div class="hotel">
+      <p class="label">Hotel</p>
+      <input matInput type="text" [(ngModel)]="filters.name" class="input name" (keyup)="onFilter()" placeholder="Nome do hotel">
+    </div>
+
+  <mat-accordion>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title class="title-panel"> Preco </mat-panel-title>
+    </mat-expansion-panel-header>
+    <div class="price">
+      <div class="label-slider">
+        <p>R$ {{filters.minPrice}}</p>
+        <p> - </p>
+        <p>R$ {{filters.maxPrice}}</p>
+      </div>
+    <mat-slider min="92" max="400" step="1" >
+      <input value="92" matSliderStartThumb [(ngModel)]="filters.minPrice" (change)="onFilter()">
+      <input value="400" matSliderEndThumb [(ngModel)]="filters.maxPrice" (change)="onFilter()">
+    </mat-slider>
+    </div>
+  </mat-expansion-panel>
+  <hr>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title class="title-panel"> Estrelas </mat-panel-title>
+    </mat-expansion-panel-header>
+    <div class="stars">
+
+    @for(star of starOptions ; track star) {
+      <div class="star-check">
+        <div class="checkbox"><input type="checkbox" name="{{star}}" id="{{star}}" (click)="toggleStar(star.value)"> {{star.label}}</div>
+        <div class="qtd">{{star.count}}</div>
+      </div>
+    }
+    </div>
+  </mat-expansion-panel>
+</mat-accordion>
+
+    
+  
+
+</div>

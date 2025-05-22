@@ -1,0 +1,136 @@
+.main {
+  margin: 1rem 8rem;
+  font-family: "Titillium Web", sans-serif;
+
+  p,
+  .guests .hotel p,
+  .booking-guest p {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #00264d;
+    margin: 0;
+  }
+  .resume {
+    display: flex;
+    gap: 1rem;
+    width: 100%;
+
+    .hotel,
+    .booking-guest,
+    .overview {
+      margin-top: 1rem;
+      background-color: #fff;
+      padding: 1.2rem;
+      border-radius: 1.5rem;
+    }
+    .guests {
+      width: 70%;
+    }
+
+    .overview {
+      width: 30%;
+      height: fit-content;
+
+      p.title {
+        color: #0080ff;
+        font-size: 1.5rem;
+        border-bottom: 1px solid #e3ebf3;
+      }
+
+      .hotel-info {
+        .name {
+          color: #00264d;
+        }
+        .address,
+        .room-name {
+          font-size: 1rem;
+          color: #698096;
+          font-weight: 300;
+          margin: 0;
+        }
+
+        .room-info {
+          margin-top: 1rem;
+          border-bottom: 1px solid #e3ebf3;
+
+          .room-name {
+            color: #000;
+            font-weight: 400;
+          }
+          p{margin:0}
+
+            .refundable, .refundable .icon,  .no-refundable, .no-refundable .icon {
+                display: flex;
+                align-items: center;
+                gap: 0rem;
+                font-size: 0.9rem;
+             }
+            .refundable, .refundable .icon {color: #0080FF;}
+
+            .no-refundable, no-refundable .icon { color: #FF0000;}
+        }
+
+        .price {
+            margin-top: 1rem;
+            .taxes, .total {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+
+                p.text{
+                    font-size: 1rem;
+                    font-weight: 300;
+                    color: #00264d;
+                }
+                p.value {font-size: 1rem;}
+                p.total-value{
+                    font-size: 1.8rem;
+                    font-weight: 700;
+                    color: #0080ff;
+                }
+            }
+        }
+      }
+
+      button{
+        margin-top: 1rem;
+        background-color: #0080ff;
+        color: #fff;
+        border: none;
+        width: 100%;
+        border-radius: 1.5rem;
+        padding: 1rem 2rem;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+
+      }
+    }
+  }
+
+  .fields {
+    margin-top: 1rem;
+    display: flex;
+    gap: 1rem;
+  }
+
+  .single-field,
+  .fields {
+    .input {
+      display: flex;
+      flex-direction: column;
+
+      label {
+        font-weight: 600;
+      }
+      input,
+      textarea {
+        border: 1px solid #bfccd9;
+        border-radius: 0.5rem;
+        padding: 0.5rem;
+        margin-top: 0.5rem;
+        font-size: 1rem;
+      }
+    }
+  }
+}

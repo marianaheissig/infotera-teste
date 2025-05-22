@@ -1,0 +1,82 @@
+<div class="main">
+  <p class="title">Finalize sua reserva!</p>
+  <div class="resume">
+    <div class="guests">
+      <div class="hotel">
+        <p>Hotel: {{this.hotelData?.hotel.name}}</p>
+        <div class="guest">
+          @for(i of totalArray ; track i) {
+            <div class="fields">
+              <div class="input" >
+                <label for="name">Nome (hospede)</label>
+                <input id="name" type="text" placeholder="Nome" [(ngModel)]="peopleNames[i].firstName"  />
+              </div>
+              <div class="input">
+                <label for="surname">Sobrenome </label>
+                <input id="surname" type="text" placeholder="Sobrenome" [(ngModel)]="peopleNames[i].lastName" />
+              </div>
+            </div>
+          }
+        </div>
+      </div>
+      <div class="booking-guest">
+        <p>Contato da reserva</p>
+        <div class="fields">
+          <div class="input">
+            <label for="name">Nome (hospede)</label>
+            <input id="name" type="text" placeholder="Nome" [(ngModel)]="contact" />
+          </div>
+          <div class="input">
+            <label for="email">Email</label>
+            <input type="email" placeholder="email" id="email" [(ngModel)]="emailContact" />
+          </div>
+          <div class="input">
+            <label for="tel">Telefone (Whatsapp)</label>
+            <input type="tel" placeholder="(XX)XXXXX-XXXX" [(ngModel)]="phoneContact" />
+          </div>
+        </div>
+        <div class="single-field">
+          <div class="input">
+            <label for="obs">Oservacoes</label>
+            <textarea name="obs" id="obs" placeholder="sua mensagem" [(ngModel)]="obsContact"></textarea>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="overview">
+      <p class="title">Sua reserva</p>
+      <div class="hotel-info">
+        <p class="name">{{this.hotelData?.hotel.name}}</p>
+        <p class="address">{{this.hotelData?.hotel.address}}</p>
+        <div class="room-info">
+          <p class="room-name">{{this.roomData.roomType.name}}</p>
+          <div class="refund">
+            <p class="no-refund">
+              @if(this.roomData.cancellationPolicies.refundable) { 
+                <p class="refundable">
+                    <mat-icon aria-hidden="false" aria-label="task_alt" fontIcon="task_alt" class="material-icons-outlined icon" />Cancelamento gratuito
+                </p>
+              }
+              @else {
+                 <p class="no-refundable">
+                    <mat-icon aria-hidden="false" aria-label="cancel" fontIcon="cancel" class="material-icons-outlined icon" />Multa de cancelamento
+                </p>
+              }
+                </p>
+          </div>
+        </div>
+        <div class="price">
+          <div class="taxes">
+            <p class="text">Impostos e taxas</p>
+            <p class="value">R$ {{tax.toFixed(2)}}</p>
+          </div>
+          <div class="total">
+            <p class="text">Total</p>
+            <p class="total-value">R$ {{totalPriceTax.toFixed(2)}}</p>
+          </div>
+        </div>
+      </div>
+      <button (click)="book()">Reservar</button>
+    </div>
+  </div>
+</div>

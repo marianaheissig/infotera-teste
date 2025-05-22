@@ -1,0 +1,24 @@
+<div class="main">
+    <p class="bigtext">Reserva realizada com sucesso!</p>
+<div class="infos">
+    
+        <div class="hotel">
+            <p>Hotel: <span>{{hotelInfo.hotel.name}}</span></p>
+        </div>
+    
+        <div class="guests">
+            <p>Hospedes</p>
+            @for(guest of peopleInfo.peoples; track guest) {
+                <p>nome: <span>{{guest.firstName}} {{guest.lastName}}</span></p>
+            }
+        </div>
+    
+        <div class="contact">
+            <p>Contato</p>
+            <p>nome: <span>{{peopleInfo.contact}}</span></p>
+            <p>email: <span>{{peopleInfo.emailContact}}</span></p>
+            <p>
+        </div>
+</div>
+
+</div>
